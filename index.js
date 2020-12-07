@@ -5,10 +5,10 @@ var port = process.env.PORT || 3000;
 //config connect db
 var mysql = require('mysql');
 var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "japanese"
+  host: "ixnzh1cxch6rtdrx.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+  user: "cbua1o5kgyu35taq",
+  password: "s3fbdtkmn7351y92",
+  database: "d858igmcf4agz2e2"
 });
 
 
