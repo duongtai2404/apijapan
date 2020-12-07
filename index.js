@@ -18,6 +18,10 @@ var con = mysql.createConnection({
 //   console.log("Connected!!!")
 // });
 
+//get /
+app.get('/', (req, res) => {
+  res.send('Hello');
+});
 
 //access table course
 app.get('/api/course', function (req, res) {
