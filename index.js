@@ -62,6 +62,16 @@ app.get('/api/vocabulary/:id', (req,res) => {
   });
 });
 
+//get grammar
+app.get('/api/grammar', (req,res) => {
+	let id = req.params.id ;
+	var sql = "SELECT id , name FROM grammar" ;
+	con.query(sql, function(err, results) {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
 app.listen(port,function(){
     console.log('Node server running @ http://localhost:' + port)
 });
