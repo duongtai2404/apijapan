@@ -32,10 +32,11 @@ app.get('/api/course', function (req, res) {
   });
 });
 
+//comment
 //get detail course with id
 app.get('/api/course/:id', (req,res) => {
 	let id = req.params.id ;
-	var sql = "SELECT id,jWord,vnWord,imgWord FROM detailcourse WHERE idCourse=" + id;
+	var sql = "SELECT id,jWord,vnWord,imgWord,type FROM detailcourse WHERE idCourse=" + id;
 	con.query(sql, function(err, results) {
     if (err) throw err;
     res.json(results);
