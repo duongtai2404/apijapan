@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
   res.send('Hello');
 });
 
-//access table course
+//get course
 app.get('/api/course', function (req, res) {
   var sql = "SELECT * FROM course";
   con.query(sql, function(err, results) {
@@ -39,7 +39,7 @@ app.get('/api/course', function (req, res) {
     res.json(results);
   });
 });
-
+//add course
 app.post('/api/course',(req,res)=>{
  	let course = req.body;
 	 let isExitsName = (nameCourse) => {
@@ -75,24 +75,33 @@ app.post('/api/course',(req,res)=>{
 	 }).catch((reject)=>{
 
 	 });
-
 })
-//comment
-//get detail course with id
-app.get('/api/course/:id',(req,res) => {
-	let id = req.params.id ;
-	var sql = "SELECT id,jWord,vnWord,imgWord,type FROM detailcourse WHERE idCourse=" + id;
-	con.query(sql, function(err, results) {
-    if (err) throw err;
-    res.json(results);
-  });
-});
 // update course with id
 app.put('/api/course/:id',(req,res) => {
 	let id = req.params.id ;
 	let course = req.body;
 	var sql = "UPDATE course SET name = ?, img = ? WHERE id = ?";
 	con.query(sql,[course.name,course.img,id], function(err, results) {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+//delete course with id
+app.delete('/api/course/:id',(req,res) => {
+	let id = req.params.id ;
+	var sql = "DELETE FROM course WHERE id = ?";
+	con.query(sql,[id], function(err, results) {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+
+//get detailcourse with id
+app.get('/api/course/:id',(req,res) => {
+	let id = req.params.id ;
+	var sql = "SELECT id,jWord,vnWord,imgWord,type FROM detailcourse WHERE idCourse=" + id;
+	con.query(sql, function(err, results) {
     if (err) throw err;
     res.json(results);
   });
@@ -166,6 +175,17 @@ app.put('/api/detailcourse/:id',(req,res) => {
     res.json(results);
   });
 });
+//delete detailcourese with id
+app.delete('/api/detailcourse/:id',(req,res) => {
+	let id = req.params.id ;
+	var sql = "DELETE FROM detailcourse WHERE id = ?";
+	con.query(sql,[id], function(err, results) {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+
 //get all vocabulary
 app.get('/api/vocabulary', function (req, res) {
   var sql = "SELECT * FROM vocabulary";
@@ -210,23 +230,33 @@ app.post('/api/vocabulary',(req,res)=>{
 		}
 	});
 });
-
-//get detail vocabulary with id
-app.get('/api/vocabulary/:id', (req,res) => {
-	let id = req.params.id ;
-	var sql = "SELECT dv.id,jWord,vnWord,imgWord,tw.name,tw.shortName FROM detailvocabulary as dv, typeword AS tw WHERE typeWord=tw.id and idVocabulary=" 
-	+ id + " ORDER BY dv.id;" ;
-	con.query(sql, function(err, results) {
-    if (err) throw err;
-    res.json(results);
-  });
-});
 //update vocabulary with id
 app.put('/api/vocabulary/:id', (req,res) => {
 	let id = req.params.id ;
 	let vocabulary = req.body;
 	var sql = "UPDATE vocabulary SET name = ? WHERE id = ?";
 	con.query(sql,[vocabulary.name, id], function(err, results) {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+//delete vocabulary with id
+app.delete('/api/vocabulary/:id', (req,res) => {
+	let id = req.params.id ;
+	var sql = "DELETE FROM vocabulary WHERE id = ?";
+	con.query(sql,[id], function(err, results) {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+
+//get detailvocabulary with id
+app.get('/api/vocabulary/:id', (req,res) => {
+	let id = req.params.id ;
+	var sql = "SELECT dv.id,jWord,vnWord,imgWord,tw.name,tw.shortName FROM detailvocabulary as dv, typeword AS tw WHERE typeWord=tw.id and idVocabulary=" 
+	+ id + " ORDER BY dv.id;" ;
+	con.query(sql, function(err, results) {
     if (err) throw err;
     res.json(results);
   });
@@ -326,6 +356,17 @@ app.put('/api/detailvocabulary/:id', (req,res) => {
     res.json(results);
   });
 });
+//delete detailvocabulary with id
+app.delete('/api/detailvocabulary/:id', (req,res) => {
+	let id = req.params.id ;
+	var sql = "DELETE FROM detailvocabulary WHERE id = ?";
+	con.query(sql,[id], function(err, results) {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+
 //get grammar
 app.get('/api/grammar', (req,res) => {
 	let id = req.params.id ;
@@ -371,10 +412,6 @@ app.post('/api/grammar',(req,res)=>{
 		}
 	});
 });
-app.listen(port,function(){
-    console.log('Node server running @ http://localhost:' + port)
-});
-
 // update grammar with id
 app.put('/api/grammar/:id', (req,res) => {
 	let id = req.params.id ;
@@ -385,4 +422,18 @@ app.put('/api/grammar/:id', (req,res) => {
     if (err) throw err;
     res.json(results);
   });
+});
+//delete grammar with id
+app.delete('/api/grammar/:id', (req,res) => {
+	let id = req.params.id ;
+	var sql = "DELETE FROM grammar WHERE id = ?";
+	con.query(sql,[id], function(err, results) {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+
+app.listen(port,function(){
+    console.log('Node server running @ http://localhost:' + port)
 });
