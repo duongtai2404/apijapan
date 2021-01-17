@@ -264,7 +264,6 @@ app.get('/api/vocabulary/:id', (req,res) => {
 // add detailvocabulary
 app.post('/api/detailvocabulary',(req,res)=>{
 	let idVocabulary = req.body.idVocabulary;
-	console.log(idVocabulary);
 	let typeWord = req.body.typeWord;
 	let jWord = req.body.jWord;
 	let detailVocabulary = req.body;
@@ -298,7 +297,6 @@ app.post('/api/detailvocabulary',(req,res)=>{
 		});
 	};
 	let isExitsVocabularyWord = (jWord,idVocabulary)=>{
-		console.log(jWord,idVocabulary);
 		return new Promise((resolve,reject) => {
 			let sql = "SELECT * FROM detailvocabulary WHERE jWord = ? AND idVocabulary = ?";
 			con.query(sql,[jWord,idVocabulary],(err,results,fields)=>{
@@ -315,7 +313,7 @@ app.post('/api/detailvocabulary',(req,res)=>{
 
 	let addDetailVocabulary = (detailVocabulary) => {
 		return new Promise((resolve,reject) => {
-			let sql = "INSERT INTO detailvocabulary (jWord,vnWord,imgWord,typeWord,idVocabulary) VALUE (?,?,?,?)";
+			let sql = "INSERT INTO detailvocabulary (jWord,vnWord,imgWord,typeWord,idVocabulary) VALUE (?,?,?,?,?)";
 			con.query(sql,[detailVocabulary.jWord,detailVocabulary.vnWord,detailVocabulary.imgWord,detailVocabulary.typeWord,detailVocabulary.idVocabulary],(err,results,fields)=>{
  				if(err) throw err;
  				res.json(detailVocabulary);
