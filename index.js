@@ -315,8 +315,8 @@ app.post('/api/detailvocabulary',(req,res)=>{
 
 	let addDetailVocabulary = (detailVocabulary) => {
 		return new Promise((resolve,reject) => {
-			let sql = "INSERT INTO detailvocabulary (jWord,vnWord,typeWord,idVocabulary) VALUE (?,?,?,?)";
-			con.query(sql,[detailVocabulary.jWord,detailVocabulary.vnWord,detailVocabulary.typeWord,detailVocabulary.idVocabulary],(err,results,fields)=>{
+			let sql = "INSERT INTO detailvocabulary (jWord,vnWord,imgWord,typeWord,idVocabulary) VALUE (?,?,?,?)";
+			con.query(sql,[detailVocabulary.jWord,detailVocabulary.vnWord,detailVocabulary.imgWord,detailVocabulary.typeWord,detailVocabulary.idVocabulary],(err,results,fields)=>{
  				if(err) throw err;
  				res.json(detailVocabulary);
  			});
@@ -350,8 +350,8 @@ app.post('/api/detailvocabulary',(req,res)=>{
 app.put('/api/detailvocabulary/:id', (req,res) => {
 	let id = req.params.id ;
 	let detailvocabulary = req.body;
-	var sql = "UPDATE detailvocabulary SET jWord = ?,vnWord = ?,typeWord = ?,idVocabulary = ? WHERE id = ?";
-	con.query(sql,[detailvocabulary.jWord,detailvocabulary.vnWord,detailvocabulary.typeWord,detailvocabulary.idVocabulary,id], function(err, results) {
+	var sql = "UPDATE detailvocabulary SET jWord = ?,vnWord = ?,typeWord = ?,idVocabulary = ?,imgWord = ?  WHERE id = ?";
+	con.query(sql,[detailvocabulary.jWord,detailvocabulary.vnWord,detailvocabulary.typeWord,detailvocabulary.idVocabulary,detailvocabulary.imgWord,id], function(err, results) {
     if (err) throw err;
     res.json(results);
   });
