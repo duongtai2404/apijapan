@@ -261,7 +261,7 @@ app.get('/api/vocabulary/:id', (req,res) => {
     res.json(results);
   });
 });
-// add detailvocabulary
+// add detailvocabulary fix
 app.post('/api/detailvocabulary',(req,res)=>{
 	let idVocabulary = req.body.idVocabulary;
 	let typeWord = req.body.typeWord;
