@@ -1,5 +1,5 @@
 # APIs for Study Japanese App.
-> We created with Nodejs, MySQL.
+> We created with Nodejs, MySQL and deploy to Heroku.
 
 ## Table of Contents
 * [General Info](#general-information)
