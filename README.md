@@ -6,7 +6,7 @@
 * [Technologies Used](#technologies-used)
 * [Features](#features)
 * [APIs](#apis)
-* [Source Front-end](#source front-end)
+* [Source Front-end](#source-front-end)
 * [Project Status](#project-status)
 * [Contact](#contact)
 
@@ -29,7 +29,7 @@ List the ready features here:
 ## APIs
 Deployed [here](https://apijapanese.herokuapp.com/api/course/2)
 
-## Source Front-end
+## Source Front End
 See [here](https://github.com/DucTai99/japanproject)
 
 ## Project Status
